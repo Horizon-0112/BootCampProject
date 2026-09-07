@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 - 자취생 생존 요리</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/my-page.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+<div th:replace="~{common/header :: header}"></div>
+    <div class="mypage-container">
+
+        <!-- 프로필 카드 -->
+        <div class="profile-section">
+            <div class="profile-card">
+                <div class="profile-avatar-wrap">
+                    <div class="profile-avatar">예</div>
+                    <button class="avatar-edit-btn" id="btnAvatarEdit" title="프로필 사진 변경">변경</button>
+                </div>
+
+                <div class="profile-info">
+                    <h2 class="profile-nickname" id="profileNickname">자취요리왕</h2>
+                    <p class="profile-email" id="profileEmail">example@email.com</p>
+                    <p class="profile-joined">2026.07.27 가입</p>
+
+                    <div class="profile-follow">
+                        <span><strong>0</strong> 팔로워</span>
+                        <span><strong>0</strong> 팔로잉</span>
+                    </div>
+
+                    <button class="profile-bio-btn" id="btnBio">자기소개를 등록할 수 있습니다.</button>
+                </div>
+
+                <button class="btn-edit" id="btnEditProfile">정보 수정</button>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-num">0</span>
+                    <span class="stat-label">내 레시피</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">0</span>
+                    <span class="stat-label">찜한 레시피</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">0</span>
+                    <span class="stat-label">받은 후기</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 탭 메뉴 -->
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="my-recipes">내가 쓴 레시피</button>
+            <button class="tab-btn" data-tab="saved-recipes">찜한 레시피</button>
+            <button class="tab-btn" data-tab="reviews">후기</button>
+            <button class="tab-btn" data-tab="comments">댓글</button>
+        </div>
+
+        <!-- 1. 내가 쓴 레시피 -->
+        <div class="tab-panel active" id="panel-my-recipes">
+            <div class="sort-bar">
+                <button class="sort-btn active" data-sort="latest">최신순</button>
+                <button class="sort-btn" data-sort="views">조회순</button>
+                <button class="sort-btn" data-sort="scrap">스크랩순</button>
+            </div>
+
+            <div class="empty-state">
+                <p class="empty-text">레시피를 직접 올려보세요!</p>
+                <button class="btn-primary-outline" id="btnAddRecipe">레시피 등록</button>
+            </div>
+        </div>
+
+        <!-- 2. 찜한 레시피 -->
+        <div class="tab-panel" id="panel-saved-recipes">
+            <div class="empty-state">
+                <p class="empty-text">아직 찜한 레시피가 없어요.</p>
+                <button class="btn-primary-outline" id="btnBrowseRecipe">구경하러 가기</button>
+            </div>
+        </div>
+
+        <!-- 3. 후기 -->
+        <div class="tab-panel" id="panel-reviews">
+            <div class="subtoggle">
+                <button class="subtoggle-btn active" data-sub="received-review">받은 후기</button>
+                <button class="subtoggle-btn" data-sub="written-review">내가 쓴 후기</button>
+            </div>
+
+            <div class="sub-panel active" id="sub-received-review">
+                <div class="empty-state small">
+                    <p class="empty-text">아직 받은 후기가 없어요.</p>
+                </div>
+            </div>
+
+            <div class="sub-panel" id="sub-written-review">
+                <div class="empty-state small">
+                    <p class="empty-text">아직 작성한 후기가 없어요.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 댓글 -->
+        <div class="tab-panel" id="panel-comments">
+            <div class="subtoggle">
+                <button class="subtoggle-btn active" data-sub="received-comment">받은 댓글</button>
+                <button class="subtoggle-btn" data-sub="written-comment">내가 쓴 댓글</button>
+            </div>
+
+            <div class="sub-panel active" id="sub-received-comment">
+                <div class="empty-state small">
+                    <p class="empty-text">아직 받은 댓글이 없어요.</p>
+                </div>
+            </div>
+
+            <div class="sub-panel" id="sub-written-comment">
+                <div class="empty-state small">
+                    <p class="empty-text">아직 작성한 댓글이 없어요.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div th:replace="~{common/footer :: footer}"></div>
+</body>
+</html>

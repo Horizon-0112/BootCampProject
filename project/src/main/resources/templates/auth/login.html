@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+<div th:replace="~{common/header :: header}"></div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="login-title">로그인</h1>
+            <p class="login-sub">로그인하고 내 냉장고 재료에 맞는 레시피를 추천받아 보세요.</p>
+
+            <form class="auth-form" id="loginForm">
+                <div class="form-row">
+                    <label for="loginId">아이디 또는 이메일</label>
+                    <input type="text" id="loginId" placeholder="이메일 또는 아이디 입력" required>
+                </div>
+                <div class="form-row">
+                    <label for="loginPassword">비밀번호</label>
+                    <input type="password" id="loginPassword" placeholder="비밀번호 입력" required>
+                </div>
+                <button type="submit" class="btn-submit">로그인</button>
+            </form>
+
+            <div class="login-links">
+                <button type="button" class="text-link" id="btnFindId">아이디 찾기</button>
+                <span class="divider">|</span>
+                <button type="button" class="text-link" id="btnFindPw">비밀번호 찾기</button>
+            </div>
+
+            <div class="login-simple-login">
+                <div class="login-divider-line"><span>간편 로그인</span></div>
+                <div class="simple-login-buttons">
+                    <button type="button" class="simple-btn kakao">카카오톡으로 로그인</button>
+                    <button type="button" class="simple-btn naver">네이버로 로그인</button>
+                    <button type="button" class="simple-btn phone">휴대폰으로 로그인</button>
+                </div>
+            </div>
+
+            <p class="auth-footer">아직 계정이 없으신가요? <a href="/createAccount">회원가입</a></p>
+        </div>
+    </div>
+
+<div th:replace="~{common/footer :: footer}"></div>
+</body>
+</html>

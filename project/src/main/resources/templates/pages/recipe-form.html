@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recipeForm</title>
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <link rel="stylesheet" th:href="@{/css/recipe-form.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+<div th:replace="~{common/header :: header}"></div>
+    <div class="recipe-form-container">
+      <div class="recipe-form-header">
+        <h1 class="recipe-form-header-title">레시피 등록</h1>
+        <p class="recipe-form-header-description">나만의 특별한 자취 요리 비법을 공유해주세요. 신선한 재료와 간단한 과정으로 모두가 즐길 수 있는 레시피를 기다립니다.</p>
+      </div>
+
+      <form action="#" method="POST">
+        <div class="recipe-form-card">
+          <div class="recipe-form-field">
+            <label class="recipe-form-label" for="title">레시피 제목</label>
+            <input class="recipe-form-input" type="text" id="title" placeholder="예: 10분 완성 토마토 달걀 볶음">
+          </div>
+          <div class="recipe-form-field">
+            <label class="recipe-form-label" for="desc">한 줄 소개</label>
+            <input class="recipe-form-input" type="text" id="desc" placeholder="어떤 매력이 있는 요리인가요?">
+          </div>
+        </div>
+
+        <div class="recipe-form-card">
+          <div class="recipe-form-field">
+            <label class="recipe-form-label">난이도</label>
+            <div class="recipe-form-difficulty-group">
+              <button type="button" class="recipe-form-difficulty-btn active">쉬움</button>
+              <button type="button" class="recipe-form-difficulty-btn">보통</button>
+              <button type="button" class="recipe-form-difficulty-btn">어려움</button>
+            </div>
+          </div>
+
+          <div class="recipe-form-field">
+            <label class="recipe-form-label" for="time">예상 소요 시간 (분)</label>
+            <input class="recipe-form-input" type="number" id="time" placeholder="15">
+          </div>
+        </div>
+
+        <!-- 3. 재료 선택 -->
+        <div class="recipe-form-card">
+          <h2 class="recipe-form-card-title">재료 선택</h2>
+          <p class="recipe-form-card-subtext">필요한 재료를 검색하거나 카테고리에서 선택하세요.</p>
+          
+          <div class="recipe-form-search-box">
+            <span class="recipe-form-search-icon">🔍</span>
+            <input class="recipe-form-search-input" type="text" placeholder="재료 검색 (예: 양파, 계란)...">
+          </div>
+
+          <div class="recipe-form-tag-container">
+            <span class="recipe-form-tag">토마토 <span class="recipe-form-tag-close-btn">✕</span></span>
+            <span class="recipe-form-tag recipe-form-tag-pink">계란 <span class="recipe-form-tag-close-btn">✕</span></span>
+          </div>
+        </div>
+
+        <!-- 4. 조리 순서 -->
+        <div class="recipe-form-card">
+          <div class="recipe-form-step-header">
+            <h2 class="recipe-form-card-title" style="margin-bottom: 0;">조리 순서</h2>
+            <button type="button" class="recipe-form-add-step-btn">+ 순서 추가</button>
+          </div>
+
+          <div class="recipe-form-step-item">
+            <div class="recipe-form-step-number">1</div>
+            <textarea class="recipe-form-textarea" placeholder="조리 과정을 상세히 적어주세요."></textarea>
+            <div class="recipe-form-image-upload-box">
+              <svg viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5-7l-3 3.72L9 13l-3 4h12l-4-5z"/>
+              </svg>
+              <span>사진 첨부</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-form-action-buttons">
+          <button type="button" class="recipe-form-btn-outline">임시 저장</button>
+          <button type="submit" class="recipe-form-btn-submit">등록하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <div th:replace="~{common/footer :: footer}"></div>
+</body>
+</html>

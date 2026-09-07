@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자취생요리</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+<body>
+    <div th:replace="~{common/header :: header}"></div>
+
+    <div class="index-container">
+        <div class="index-search">
+            <input type="text" id="search" placeholder="어떤 요리를 찾으시나요? (예: 참치 김치찌개)">
+        </div>
+
+        <div class="index-refrigerator">  
+
+        </div>
+    
+        <div class="index-curation">
+            <h2>냉장고 재료 100% 활용 요리</h2>
+            <div class="index-recommendation" id="curation-perfect-match">
+                
+            </div>
+        </div>
+
+        <div class="index-curation">
+            <h2>가장 많이 요리된 요리</h2 >
+            <div class="index-recommendation" id="curation-substitute">
+                
+            </div>
+        </div>
+
+        <div class="index-curation">
+            <h2>유통기한 임박! 당장 먹어야 할 요리</h2>
+            <div class="index-recommendation" id="curation-urgent">
+                
+            </div>
+        </div>
+
+    </div>
+    <div th:replace="~{common/footer :: footer}"></div>
+
+</body>
+</html>

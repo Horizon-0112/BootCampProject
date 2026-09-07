@@ -1,0 +1,144 @@
+﻿/* ===== 인덱스 페이지 CSS ===== */
+
+.index-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 검색 섹션 */
+.index-search {
+  margin: 40px 0;
+  padding: 20px 0;
+}
+
+.index-search input {
+  width: 100%;
+  max-width: 100%;
+  padding: 15px 20px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.index-search input::placeholder {
+  color: var(--text-secondary);
+}
+
+.index-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(214, 125, 62, 0.1);
+}
+
+/* 냉장고 섹션 */
+.index-refrigerator {
+  margin: 50px 0;
+  padding: 20px 0;
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  min-height: 200px;
+}
+
+/* 큐레이션 섹션 */
+.index-curation {
+  margin: 50px 0;
+  padding: 20px 0;
+}
+
+.index-curation h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* 추천 상품 그리드 */
+.index-recommendation {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px 0;
+}
+
+/* 태블릿 해상도 */
+@media (max-width: 1024px) {
+  .index-container {
+    padding: 0 15px;
+  }
+
+  .index-recommendation {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .index-curation h2 {
+    font-size: 20px;
+  }
+}
+
+/* 모바일 해상도 */
+@media (max-width: 768px) {
+  .index-container {
+    padding: 0 12px;
+  }
+
+  .index-search {
+    margin: 20px 0;
+  }
+
+  .index-search input {
+    padding: 12px 15px;
+    font-size: 15px;
+  }
+
+  .index-refrigerator {
+    margin: 30px 0;
+    min-height: 150px;
+  }
+
+  .index-curation {
+    margin: 30px 0;
+  }
+
+  .index-curation h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .index-recommendation {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+}
+
+/* 초소형 모바일 */
+@media (max-width: 480px) {
+  .index-container {
+    padding: 0 10px;
+  }
+
+  .index-search {
+    margin: 15px 0;
+  }
+
+  .index-search input {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .index-curation h2 {
+    font-size: 16px;
+  }
+
+  .index-recommendation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

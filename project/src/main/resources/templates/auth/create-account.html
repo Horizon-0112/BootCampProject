@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/create-account.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <title>Account</title>
+</head>
+<body>
+<div th:replace="~{common/header :: header}"></div>
+
+    <div class="container">
+        <div class="CreateAccount">
+            <h3>회원가입</h3>
+            
+            <div class="information">
+                <div class="userID">
+                    <p>아이디</p>
+                    <label for="id"></label>
+                    <input type="text" id="id" placeholder="아이디 입력 (6 ~ 20자)" maxlength=20>
+                    <input type="button" value="중복 확인">
+                </div>
+
+                <div class="userPassword">
+                    <p>비밀번호</p>
+                    <label for="pw"></label>
+                    <input type="password" id="pw" placeholder="비번 입력 (영문, 특수문자 포함 8 ~ 20자)" maxlength=20>
+
+                    <div class="ReUserPssWord">
+                        <p>비밀번호 재확인</p>
+                        <label for="RePw"></label>
+                        <input type="password" id="RePw" placeholder="비밀번호 재입력" maxlength=20>
+                    </div>
+                </div>
+
+                <div class="userEmail">
+                    <p>이메일</p>
+                    <div class="email-input-group">
+                        <input type="email"> @
+                        <select>
+                            <option selected="selected">직접입력</option>
+                            <option>gmail.com</option>
+                            <option>naver.com</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">회원가입하기</button>
+            </div> 
+        </div> 
+    </div>
+
+<div th:replace="~{common/footer :: footer}"></div>
+</body>
+</html>

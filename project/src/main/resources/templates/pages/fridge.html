@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 냉장고</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/fridge.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+<div th:replace="~{common/header :: header}"></div>
+<main class="page">
+
+    <div class="page__head">
+        <h1>내 냉장고</h1>
+        <button type="button" class="btn btn--primary" id="btnAdd">＋ 재료 추가</button>
+    </div>
+
+    <ul class="list">
+        <li class="item">
+            <div>
+                <span class="item__name">차돌박이</span>
+                <span class="item__place">냉장</span>
+                <div class="item__amount">250g / 500g</div>
+            </div>
+            <span class="dday">D-4</span>
+        </li>
+
+        
+        <li class="item">
+            <div>
+                <span class="item__name">우유</span>
+                <span class="item__place">냉장</span>
+                <div class="item__amount">625ml / 1250ml</div>
+            </div>
+            <span class="dday dday--warn">D-2</span>
+        </li>
+
+        
+        <li class="item">
+            <div>
+                <span class="item__name">삼겹살</span>
+                <span class="item__place">냉동</span>
+                <div class="item__amount">150g / 600g</div>
+            </div>
+            <span class="dday dday--over">만료</span>
+        </li>
+       
+    </ul>
+    <p class="empty">
+        냉장고가 비어 있어요.<br>
+        재료를 추가해 남은 양과 유통기한을 관리해보세요.
+    </p>
+
+</main>
+
+<div class="dim" id="dim">
+    <div class="modal">
+
+        <h2>재료 추가</h2>
+
+    
+        <div class="field">
+            <label for="name">재료 이름</label>
+            <input type="text" id="name">
+        </div>
+
+    
+        <div class="field">
+            <label for="total">총량 · 단위</label>
+            <div class="field__row">
+                <input type="number" id="total">
+                <select id="unit">
+                    <option value="g">g</option>
+                    <option value="ml">ml</option>
+                    <option value="개">개</option>
+                </select>
+            </div>
+        </div>
+
+        
+        <div class="field">
+            <label for="remain">남은 양</label>
+            <input type="number" id="remain">
+        </div>
+
+    
+        <div class="field">
+            <label for="place">보관 위치</label>
+            <select id="place">
+                <option value="FRIDGE">냉장</option>
+                <option value="FREEZER">냉동</option>
+                <option value="ROOM">실온</option>
+            </select>
+        </div>
+
+    
+        <div class="field">
+            <label for="expiry">유통기한</label>
+            <input type="date" id="expiry">
+        </div>
+
+        <div class="modal__buttons">
+            <button type="button" class="btn" id="btnCancel">취소</button>
+            <button type="button" class="btn btn--primary" id="btnSave">저장</button>
+        </div>
+
+    </div>
+</div>
+
+
+    <div th:replace="~{common/footer :: footer}"></div>
+<script>
+$(function () {
+    $('#btnAdd').click(function () { $('#dim').addClass('is-open'); });
+    $('#btnCancel, #btnSave').click(function () { $('#dim').removeClass('is-open'); });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+/* ===== 회원가입 페이지 CSS ===== */
+
+.container {
+  max-width: 380px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: calc(100vh - 400px);
+}
+
+/* 회원가입 폼 */
+.CreateAccount {
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  padding: 36px 32px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.CreateAccount h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+/* 정보 입력 섹션 */
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+  text-align: left;
+}
+
+/* 공통 입력 필드 스타일 */
+.userID,
+.userPassword,
+.userEmail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.userID p,
+.userPassword p,
+.userEmail p {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* 텍스트, 패스워드, 이메일 입력 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  padding: 13px 14px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="email"]::placeholder {
+  color: var(--text-secondary);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(120, 184, 105, 0.1);
+}
+
+/* 아이디 입력 그룹 */
+.userID input[type="text"] {
+  width: 100%;
+}
+
+.userID input[type="button"] {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+  margin-top: 5px;
+}
+
+.userID input[type="button"]:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.userID input[type="button"]:active {
+  transform: scale(0.98);
+}
+
+/* 비밀번호 섹션 */
+.userPassword input[type="password"] {
+  width: 100%;
+}
+
+.ReUserPssWord {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 5px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.ReUserPssWord p {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ReUserPssWord input[type="password"] {
+  width: 100%;
+}
+
+/* 이메일 입력 그룹 */
+.email-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.email-input-group input[type="email"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.email-input-group::after {
+  content: "@";
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.email-input-group select {
+  flex: 0 0 140px;
+  min-width: 140px;
+}
+
+/* 제출 버튼 */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* 태블릿 해상도 */
+@media (max-width: 768px) {
+  .container {
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .CreateAccount {
+    padding: 30px 25px;
+  }
+
+  .CreateAccount h3 {
+    font-size: 22px;
+  }
+}
+
+/* 모바일 해상도 */
+@media (max-width: 480px) {
+  .container {
+    margin: 20px auto;
+    padding: 0 12px;
+    min-height: auto;
+  }
+
+  .CreateAccount {
+    padding: 25px 20px;
+  }
+
+  .CreateAccount h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .information {
+    margin-top: 20px;
+    gap: 12px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select,
+  input[type="button"],
+  .submit-btn {
+    font-size: 14px;
+    padding: 12px 13px;
+  }
+
+  .userID input[type="button"] {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+
+  .email-input-group {
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .email-input-group input[type="email"] {
+    flex: 1 1 100%;
+  }
+
+  .email-input-group::after {
+    display: none;
+  }
+
+  .email-input-group select {
+    flex: 1 1 auto;
+    min-width: auto;
+  }
+
+  .ReUserPssWord {
+    margin-top: 3px;
+    padding-top: 12px;
+  }
+}

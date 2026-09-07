@@ -1,0 +1,210 @@
+/* ===== 공통 색상 및 기본 스타일 ===== */
+
+/* 색상 변수 정의 */
+body {
+  --primary-color: #78B869;
+  --primary-hover-color: #9CBDC3;
+  --primary-light: #F1C8CB;
+  --accent-warm: #F8BBBB;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-tertiary: #999;
+  --bg-main: #f5f5f5;
+  --bg-white: #fff;
+  --border-color: #e0e0e0;
+  
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더 공통 스타일 */
+.header-container {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-logo {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.header-logo a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.header-logo a:hover {
+  color: var(--primary-hover-color);
+}
+
+.header-center,
+.header-right {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.header-center a,
+.header-right a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-center a:hover,
+.header-right a:hover {
+  color: var(--primary-color);
+}
+
+/* 푸터 공통 스타일 */
+.footer {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  padding: 40px 30px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 30px;
+}
+
+.footer-brand {
+  flex: 1;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.8;
+}
+
+.footer-nav {
+  flex: 1;
+  display: flex;
+  gap: 40px;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--primary-color);
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 30px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-policy {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-policy-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.footer-policy-link:hover {
+  color: var(--primary-color);
+}
+
+.footer-policy-link.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .header-center,
+  .header-right {
+    gap: 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-nav {
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .footer-policy {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
