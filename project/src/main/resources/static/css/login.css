@@ -37,6 +37,20 @@
   text-align: left;
 }
 
+.form-error,
+.form-success {
+  font-size: 13px;
+  margin: 0 0 16px;
+}
+
+.form-error {
+  color: #c0392b;
+}
+
+.form-success {
+  color: #2e7d32;
+}
+
 .form-row {
   margin-bottom: 16px;
 }
@@ -111,6 +125,10 @@
   cursor: pointer;
   transition: color 0.3s ease;
   font-weight: 500;
+}
+
+.login-links a.text-link {
+  text-decoration: none;
 }
 
 .text-link:hover {

@@ -208,3 +208,9 @@ body {
     gap: 10px;
   }
 }
+
+.field-error, .form-error { color: #b42318; font-size: 0.875rem; margin-top: 6px; }
+.form-success { color: #18743a; font-size: 0.875rem; }
+.field-error:empty, .form-message:empty { display: none; }
+input[aria-invalid="true"] { border-color: #b42318; }
+button:disabled { opacity: .65; cursor: wait; }

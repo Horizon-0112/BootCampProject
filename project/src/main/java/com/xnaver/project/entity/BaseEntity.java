@@ -18,5 +18,6 @@ public abstract class BaseEntity {
     private LocalDateTime createdAt;
 
     @LastModifiedDate
+    @jakarta.persistence.Column(name = "updated_at")
     private LocalDateTime updateAt;
 }

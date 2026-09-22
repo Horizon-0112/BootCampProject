@@ -1,0 +1,158 @@
+/* ===== 로그인 페이지 전용 스타일 ===== */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+  min-height: calc(100vh - 400px);
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 36px 32px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-white);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.login-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+.login-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.login-links a {
+  color: var(--text-secondary);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-links a:hover {
+  color: var(--primary-color);
+}
+
+.divider {
+  color: var(--border-color);
+  font-size: 12px;
+}
+
+.login-simple-login {
+  margin-top: 28px;
+}
+
+.login-divider-line {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.login-divider-line::before,
+.login-divider-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.login-divider-line span {
+  flex-shrink: 0;
+}
+
+.simple-login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.simple-btn {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.simple-btn:hover {
+  opacity: 0.9;
+}
+
+.simple-btn:active {
+  transform: scale(0.98);
+}
+
+.simple-btn.kakao {
+  background-color: #FEE500;
+  color: #3C1E1E;
+  border-color: #FEE500;
+}
+
+.simple-btn.kakao:hover {
+  background-color: #e5d000;
+  opacity: 1;
+}
+
+.simple-btn.naver {
+  background-color: #03C75A;
+  color: var(--bg-white);
+  border-color: #03C75A;
+}
+
+.simple-btn.naver:hover {
+  background-color: #02a44e;
+  opacity: 1;
+}
+
+.simple-btn.phone {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+}
+
+.simple-btn.phone:hover {
+  background-color: var(--bg-main);
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    padding: 60px 15px;
+  }
+
+  .login-box {
+    max-width: 100%;
+    padding: 30px 25px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+}

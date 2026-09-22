@@ -1,129 +1,70 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지 - 자취생 생존 요리</title>
-    <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/my-page.css}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="_csrf" th:content="${_csrf.token}"><meta name="_csrf_header" th:content="${_csrf.headerName}">
+<title>마이페이지 - 자취생 생존 요리</title>
+<link rel="stylesheet" th:href="@{/css/common.css}"><link rel="stylesheet" th:href="@{/css/my-page.css}">
+<script th:src="@{/js/my-page.js}" defer></script>
 </head>
 <body>
 <div th:replace="~{common/header :: header}"></div>
-    <div class="mypage-container">
-
-        <!-- 프로필 카드 -->
-        <div class="profile-section">
-            <div class="profile-card">
-                <div class="profile-avatar-wrap">
-                    <div class="profile-avatar">예</div>
-                    <button class="avatar-edit-btn" id="btnAvatarEdit" title="프로필 사진 변경">변경</button>
-                </div>
-
-                <div class="profile-info">
-                    <h2 class="profile-nickname" id="profileNickname">자취요리왕</h2>
-                    <p class="profile-email" id="profileEmail">example@email.com</p>
-                    <p class="profile-joined">2026.07.27 가입</p>
-
-                    <div class="profile-follow">
-                        <span><strong>0</strong> 팔로워</span>
-                        <span><strong>0</strong> 팔로잉</span>
-                    </div>
-
-                    <button class="profile-bio-btn" id="btnBio">자기소개를 등록할 수 있습니다.</button>
-                </div>
-
-                <button class="btn-edit" id="btnEditProfile">정보 수정</button>
-            </div>
-
-            <div class="profile-stats">
-                <div class="stat">
-                    <span class="stat-num">0</span>
-                    <span class="stat-label">내 레시피</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-num">0</span>
-                    <span class="stat-label">찜한 레시피</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-num">0</span>
-                    <span class="stat-label">받은 후기</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 탭 메뉴 -->
-        <div class="tab-nav">
-            <button class="tab-btn active" data-tab="my-recipes">내가 쓴 레시피</button>
-            <button class="tab-btn" data-tab="saved-recipes">찜한 레시피</button>
-            <button class="tab-btn" data-tab="reviews">후기</button>
-            <button class="tab-btn" data-tab="comments">댓글</button>
-        </div>
-
-        <!-- 1. 내가 쓴 레시피 -->
-        <div class="tab-panel active" id="panel-my-recipes">
-            <div class="sort-bar">
-                <button class="sort-btn active" data-sort="latest">최신순</button>
-                <button class="sort-btn" data-sort="views">조회순</button>
-                <button class="sort-btn" data-sort="scrap">스크랩순</button>
-            </div>
-
-            <div class="empty-state">
-                <p class="empty-text">레시피를 직접 올려보세요!</p>
-                <button class="btn-primary-outline" id="btnAddRecipe">레시피 등록</button>
-            </div>
-        </div>
-
-        <!-- 2. 찜한 레시피 -->
-        <div class="tab-panel" id="panel-saved-recipes">
-            <div class="empty-state">
-                <p class="empty-text">아직 찜한 레시피가 없어요.</p>
-                <button class="btn-primary-outline" id="btnBrowseRecipe">구경하러 가기</button>
-            </div>
-        </div>
-
-        <!-- 3. 후기 -->
-        <div class="tab-panel" id="panel-reviews">
-            <div class="subtoggle">
-                <button class="subtoggle-btn active" data-sub="received-review">받은 후기</button>
-                <button class="subtoggle-btn" data-sub="written-review">내가 쓴 후기</button>
-            </div>
-
-            <div class="sub-panel active" id="sub-received-review">
-                <div class="empty-state small">
-                    <p class="empty-text">아직 받은 후기가 없어요.</p>
-                </div>
-            </div>
-
-            <div class="sub-panel" id="sub-written-review">
-                <div class="empty-state small">
-                    <p class="empty-text">아직 작성한 후기가 없어요.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 댓글 -->
-        <div class="tab-panel" id="panel-comments">
-            <div class="subtoggle">
-                <button class="subtoggle-btn active" data-sub="received-comment">받은 댓글</button>
-                <button class="subtoggle-btn" data-sub="written-comment">내가 쓴 댓글</button>
-            </div>
-
-            <div class="sub-panel active" id="sub-received-comment">
-                <div class="empty-state small">
-                    <p class="empty-text">아직 받은 댓글이 없어요.</p>
-                </div>
-            </div>
-
-            <div class="sub-panel" id="sub-written-comment">
-                <div class="empty-state small">
-                    <p class="empty-text">아직 작성한 댓글이 없어요.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-<div th:replace="~{common/footer :: footer}"></div>
-</body>
-</html>
+<main class="mypage-container" th:attr="data-api=@{/api/v1/me},data-login=@{/auth/login}">
+<p id="pageMessage" role="alert"></p><button id="retryProfile" type="button" hidden>내 정보 다시 불러오기</button>
+<section class="profile-section" aria-label="내 프로필">
+<div class="profile-card">
+<div class="profile-avatar-wrap"><div class="profile-avatar" id="profileAvatar" aria-hidden="true">…</div>
+<button class="avatar-edit-btn" id="btnAvatarEdit" type="button" aria-expanded="false" aria-controls="avatarSection">사진 변경</button></div>
+<div class="profile-info"><h1 class="profile-nickname" id="profileNickname">불러오는 중...</h1>
+<p class="profile-email" id="profileEmail"></p><p class="profile-joined" id="profileJoined"></p></div>
+<button class="btn-edit" id="btnEditProfile" type="button" disabled aria-expanded="false" aria-controls="editSection">정보 수정</button>
+</div>
+<div class="profile-stats">
+<div class="stat"><span class="stat-num" id="recipeCount">—</span><span class="stat-label">내 레시피</span></div>
+<div class="stat"><span class="stat-num" id="bookmarkCount">—</span><span class="stat-label">북마크</span></div>
+<div class="stat"><span class="stat-num" id="commentCount">—</span><span class="stat-label">내 댓글</span></div>
+</div>
+</section>
+<section class="account-panel" id="avatarSection" hidden>
+<h2>프로필 사진</h2>
+<p id="avatarHelp">JPG·PNG, 최대 5MB. 사진 중앙을 정사각형으로 잘라 저장합니다.</p>
+<form id="avatarForm" novalidate>
+<label for="avatarFile">사진 선택</label>
+<input id="avatarFile" name="file" type="file" accept="image/jpeg,image/png" aria-describedby="avatarHelp avatarMessage">
+<img id="avatarPreview" class="avatar-preview" alt="선택한 프로필 사진 미리보기" hidden>
+<p id="avatarMessage" class="form-message" role="alert" aria-live="polite"></p>
+<div class="avatar-actions"><button id="btnAvatarSave" class="btn-edit" type="submit" disabled>사진 저장</button>
+<button id="btnAvatarDelete" class="btn-edit" type="button" disabled>기본 사진으로 변경</button></div>
+</form></section>
+<section class="account-panel" id="editSection" hidden>
+<h2>내 정보 수정</h2><p>이메일은 로그인 ID로 사용됩니다. 닉네임과 비밀번호를 수정할 수 있습니다.</p>
+<form id="profileForm" novalidate>
+<div class="form-row"><label for="nickName">닉네임</label><input id="nickName" name="nickName" type="text" autocomplete="nickname" maxlength="30" required aria-describedby="nickNameError"><p id="nickNameError" data-error-for="nickName" class="field-error"></p></div>
+<div class="form-row"><label for="currentPassword">현재 비밀번호</label><input id="currentPassword" name="currentPassword" type="password" autocomplete="current-password" required aria-describedby="currentPasswordError"><p id="currentPasswordError" data-error-for="currentPassword" class="field-error"></p></div>
+<p>비밀번호를 변경할 때만 아래 항목을 입력하세요. 공백 없이 영문·숫자·특수문자 포함 8~20자입니다.</p>
+<div class="form-row"><label for="pw">새 비밀번호</label><input id="pw" name="pw" type="password" autocomplete="new-password" maxlength="20" aria-describedby="pwError"><p id="pwError" data-error-for="pw" class="field-error"></p></div>
+<div class="form-row"><label for="pwConfirm">새 비밀번호 확인</label><input id="pwConfirm" name="pwConfirm" type="password" autocomplete="new-password" maxlength="20" aria-describedby="pwConfirmError"><p id="pwConfirmError" data-error-for="pwConfirm" class="field-error"></p></div>
+<p class="form-message" role="alert" aria-live="polite"></p><button class="btn-edit" type="submit">수정 저장</button>
+</form></section>
+<nav class="tab-nav" aria-label="내 활동">
+<button type="button" class="tab-btn active" data-tab="recipes" aria-pressed="true">내가 쓴 레시피</button>
+<button type="button" class="tab-btn" data-tab="bookmarks" aria-pressed="false">북마크한 레시피</button>
+<button type="button" class="tab-btn" data-tab="comments" aria-pressed="false">내가 쓴 댓글</button>
+</nav>
+<section class="tab-panel active" aria-label="활동 목록">
+<p class="list-summary" id="listSummary">최신순</p>
+<p id="listMessage" role="status" aria-live="polite"></p>
+<button id="retryList" type="button" hidden>목록 다시 불러오기</button>
+<div id="activityList" class="activity-list"></div>
+<div class="pagination"><button id="prevPage" type="button" disabled>이전</button><span id="pageNumber">1</span><button id="nextPage" type="button" disabled>다음</button></div>
+</section>
+<details class="account-panel danger-zone"><summary>회원 탈퇴</summary>
+<p>탈퇴하면 계정, 작성한 레시피와 댓글, 북마크, 냉장고 정보가 삭제됩니다. 내 레시피에 달린 다른 회원의 댓글과 북마크도 함께 삭제되며 복구할 수 없습니다.</p>
+<form id="withdrawForm" novalidate>
+<div class="form-row"><label for="withdrawPassword">현재 비밀번호</label><input id="withdrawPassword" name="currentPassword" type="password" autocomplete="current-password" required aria-describedby="withdrawPasswordError"><p id="withdrawPasswordError" class="field-error" data-error-for="currentPassword"></p></div>
+<label class="confirmation"><input type="checkbox" name="confirmed"> 삭제되는 정보를 확인했으며 회원 탈퇴에 동의합니다.</label>
+<p class="field-error" data-error-for="confirmed"></p><p class="form-message" role="alert" aria-live="polite"></p>
+<button class="btn-danger" type="submit">회원 탈퇴</button>
+</form></details>
+</main><div th:replace="~{common/footer :: footer}"></div>
+</body></html>
